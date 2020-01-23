@@ -1,0 +1,13 @@
+title: Techie Trooper
+email: me@techie-trooper.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Learning And Sharing
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "https://techie-trooper.dev" # the base hostname & protocol for your site, e.g. http://example.com
+github_username:  aarcosolution
+
+# Build settings
+theme: jekyll-theme-architect
+plugins:
+  - jekyll-feed
+

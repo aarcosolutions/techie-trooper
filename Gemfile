@@ -1,0 +1,23 @@
+source "https://rubygems.org"
+gem "github-pages"
+gem github-pages-health-check
+gem jekyll-feed
+gem jekyll-paginate
+gem jekyll-sitemap
+gem jekyll-theme-midnight
+
+#jekyll-swiss	1.0.0
+#jekyll-theme-architect	0.1.1
+#jekyll-theme-cayman	0.1.1
+#jekyll-theme-dinky	0.1.1
+#jekyll-theme-hacker	0.1.1
+#jekyll-theme-leap-day	0.1.1
+#jekyll-theme-merlot	0.1.1
+#jekyll-theme-midnight	0.1.1
+#jekyll-theme-minimal	0.1.1
+#jekyll-theme-modernist	0.1.1
+#jekyll-theme-primer	0.5.4
+#jekyll-theme-slate	0.1.1
+#jekyll-theme-tactile	0.1.1
+#jekyll-theme-time-machine	0.1.1
+#jekyll-titles-from-headings	0.5.3

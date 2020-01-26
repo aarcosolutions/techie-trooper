@@ -1,5 +1,5 @@
-#theme: jekyll-theme-midnight
-remote_theme: mkchoi212/paper-jekyll-theme
+theme: jekyll-theme-hacker
+#remote_theme: mkchoi212/paper-jekyll-theme
 title: Techie Trooper
 author: Amit Rai Sharma
 email: me@techie-trooper.com

@@ -3,6 +3,7 @@ layout: post
 title: "Deploying WordPress on AWS EC2"
 date: 2018-02-09
 categories: aws ec2 wordpress
+tags: aws ec2 rds
 ---
 
 # Configuring MySql RDS instance
@@ -130,4 +131,4 @@ We will now be redirected welcome screen.
 
 Enter details of your site and click on Install WordPress. With any luck we will not see any issue and will be redirected to login screen.
 
-So far we were able to access the blog via public IP address of the server. In the next article [Configure domain name routing to Ec2 instance]({% post_url aws/2019-02-09-aws-wordpress-part-2 %}), I will take you throught the process of registering a domain using Amazon Route 53 and configure a simple routing policy to route traffic to your WordPress site.
+So far we were able to access the blog via public IP address of the server. In the next article [Configure domain name routing to Ec2 instance]({% link _posts/aws/2019-02-09-aws-wordpress-part-2.md %}), I will take you throught the process of registering a domain using Amazon Route 53 and configure a simple routing policy to route traffic to your WordPress site.

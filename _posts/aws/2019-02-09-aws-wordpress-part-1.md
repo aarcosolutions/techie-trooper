@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Deploying WordPress on AWS EC2"
+title: "WordPress on AWS - Part 1: Deploying WordPress on AWS EC2"
 date: 2018-02-09
 categories: aws ec2 wordpress
 tags: aws ec2 rds
@@ -8,7 +8,7 @@ tags: aws ec2 rds
 
 # Configuring MySql RDS instance
 
-WordPress uses MySql as datastore. You can install MySql on the same box which hosts the web server. Well it is not a good idea, as you will run into a risk of loosing data if the instance gets corrupted. Moreover you will have to configure the database snapshots manually. RDS instance will take away all this headaches.
+WordPress uses MySql as datastore. You can install MySql on the same box which hosts the web server. Well it is not a good idea, as you will run into a risk of loosing data if the instance gets corrupted. Moreover you will have to configure the database snapshots manually. Creating a RDS instance will take away these headaches.
 
 1. Open RDS console and launch MySql instance. I have used db.t2.micro Instance as it is eligible for RDS Free Tier. Here you will be entering the DB Instance name, Master UserName and Password.
 
@@ -131,4 +131,4 @@ We will now be redirected welcome screen.
 
 Enter details of your site and click on Install WordPress. With any luck we will not see any issue and will be redirected to login screen.
 
-So far we were able to access the blog via public IP address of the server. In the next article [Configure domain name routing to Ec2 instance]({% link _posts/aws/2019-02-09-aws-wordpress-part-2.md %}), I will take you throught the process of registering a domain using Amazon Route 53 and configure a simple routing policy to route traffic to your WordPress site.
+So far we were able to access the blog via public IP address of the server. In the next post [Configure domain name routing to Ec2 instance]({% link _posts/aws/2019-02-09-aws-wordpress-part-2.md %}), I will take you throught the process of registering a domain using Amazon Route 53 and configure a simple routing policy to route traffic to your WordPress site.

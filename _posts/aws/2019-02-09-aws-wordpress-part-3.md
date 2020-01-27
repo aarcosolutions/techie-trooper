@@ -1,48 +1,28 @@
 ---
 layout: post
-title: "Configure SSL for WordPress site"
+title: "WordPress on AWS - Part 3: Configure SSL"
 date: 2018-02-09
-categories: aws ec2 wordpress
+categories: apache openssl
 ---
 
-# Configuring MySql RDS instance
+In this post, I will be explaining the steps for configuring SSL on Apache Web Server running on AWS EC2 Amazon Linux instance. 
 
-WordPress uses MySql as datastore. You can install MySql on the same box which hosts the web server. Well it is not a good idea, as you will run into a risk of loosing data if the instance gets corrupted. Moreover you will have to configure the database snapshots manually. RDS instance will take away all this headaches.
+# Prerequisites
+1. You will need to provision an EBS-backed Amazon Linux instance. For more information, see [Getting started with Amazon EC2 Linux Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
 
-1. Open RDS console and launch MySql instance. I have used db.t2.micro Instance as it is eligible for RDS Free Tier. Here you will be entering the DB Instance name, Master UserName and Password.
+2. Make sure the security group attached with your instance allows connections on following TCP ports:
+   *  SSH – port 20
+   * HTTP – port 80
+   * HTTPS – port 443
 
-   ![MySql RDS](/assets/images/rds1.png "MySql RDS")
-
-2. Enter the database name on Configuring Advance Settings screen. Set Publicly Accessible to No, leave all the options as default and Lunch the instance.
-
-      ![MySql RDS Advance Settings](/assets/images/rds2.png "MySql RDS Advance Settings")
-
-3. Make a note of the endpoint once the RDS instance is provisioned. You will need this endpoint while configuring WordPress site.
-      ![MySql RDS Dashboard](/assets/images/rds3.png "MySql RDS Dashboard")
-
-# Configuring Security Group
-A security group acts as a virtual firewall that controls the traffic for one or more instances. In this section we will create a security group for the EC2 instance and will modify security group attached with RDS instance. We need to make sure that web server will be able to connect to RDS instance and RDS instance is only accessible via web server.
-
-1. To create a Security Group, open EC2 console, select Security Groups and click on Create Security Group button
-2. On Create Security Group form, enter security group name, description and leave VPC as default value. Add the rule as shown in the image below
-
-   ![Create Security Group](/assets/images/rds-sg1.png "Create Security Group")
-
-   Please note that I have restricted the SSH access to my IP address as this will prevent any unwanted access to this instance. This form will automatically populated your IP address when you select My IP option.
-
-3. While provisioning the RDS instance, we selected Create new security group option for VPC Security Group(s). As a result of which, AWS will create a new RDS security group “rds-launch-wizard”. We will now edit this security group to restrict access of RDS instance to the web server. From Security Groups list, select “rds-launch-wizard”,  go to Inbound tab and click on Edit. Select Custom option and enter the name of Security Group you have created for web server “sgWordPressWebServer”.
-
-   ![Restrict RDS Access to web server](/assets/images/rds-sg2.png "Restrict RDS Access to web server")
-
-
-# Deploying an EC2 Linux Instance
-1. Provision an EBS-backed Amazon Linux instance. For more information, see Getting started with Amazon EC2 Linux Instances. In this case, I have used T2-Micro instance as it falls into free-tier for the first 12 months.
-2. Make sure you select the web server Security Group “sgWordPressWebServer” which we created previously.
+3. As a best practice, only allow SSH access to your IP address. You can configure this in the security group. For more information, see [Creating a Security Group](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#creating-security-group)
 
 # Installing Apache web server
-1. Connect to your EC2 instance
+1. Connect to your instance
    ```bash
    ssh ec2-user@<instance-public-ip> -i <key-pair-file>
+   ```
+
 2. We need to ensure the software packages on your instance is latest. Perform a quick software update.
    ```bash
    sudo yum update -y
@@ -51,83 +31,113 @@ A security group acts as a virtual firewall that controls the traffic for one or
    ```bash
    sudo service httpd status
    ```
+
 4. If Apache is missing, install Apache.
    ```bash
-   sudo yum install httpd -y   ```
+   sudo yum install httpd -y
    ```
+
 5. Check if Apache is installed.
    ```bash
    sudo service httpd status
    ```
+
 6. If Apache is not running, start httpd service
    ```bash
    sudo service httpd start
    ```
+
 7. Let us ensure that httpd service starts automatically
    ```bash
    sudo chkconfig httpd on
    ```
+
 8. Add SSL/TLS support to Apache
-   ```bash
+   ```bash 
    sudo yum install -y mod_ssl
    ```
 
-# Installing Worpress
-1. Install php and php-mysql for WordPress
-   ```bash
-   sudo yum install php php-mysql -y
+# Creating Private Key and Certificate Signing Request (CSR)
+To obtain a signed certificate from Certificate Authority (CA), you would have to first generated a self-signed SSL/TLS X.509 host certificate.
+
+1. Connect to your instance and navigate to /etc/pki/tls/private. Server’s private key for SSL/TLS is stored in this directory.
+   ```bash 
+   ssh ec2-user@<instance-public-ip> -i <key-pair-file>
+   cd /etc/pki/tls/private/
    ```
-2. Download latest version of WordPress
-   ```bash
-   wget https://wordpress.org/latest.tar.gz
+2. Create an RSA private key with password protection. This will generate a 2048-bit RSA private key that has been encrypted with AES-128 cipher. Important point to remember, each time you use this key, you would need to supply the password.
+   ```bash 
+   sudo openssl genrsa -aes128 -passout pass:EnterPasswordHere -out PrivateKeyFileName.key 2048
    ```
-3. Extract the content from lateset.tar.gz and move it to /var/www/html/ directory
-   ```bash
-   tar -xzf latest.tar.gz
-   cp -r wordpress/* /var/www/html/
+
+3. We need to make sure that the private key has highly restrictive ownership
+   ```bash 
+   sudo chown root.root PrivateKeyFileName.key
+   sudo chmod 0600 PrivateKeyFileName.key
+   ls -al PrivateKeyFileName.key
    ```
-4. Remove latest.tar.gz and worpress directory from the current directory
+
+4. Let us now create CSR using the newly generated private key. OpenSSL req command will prompt you for the information listed in the table below. The details you provide here will be crossed checked by certificate authority. Make sure you enter the correct domain name in **Common Name** property
+
+   |Attribute|Prefix|Description|Example|
+   |---|---|---|---|
+   |Country/Region|C|Business Location – Country|GB|
+   |State/Province|ST|Business Location – State/Province|Surrey|
+   |City/Locality|L|Business Location – City|Sutton|
+   |Organization Unit|OU|Organization Unit if required to be listed*| **Optional***|
+   |Organization|O|Organization’s legal business name|Your company name|
+   |Common Name|CN|Domain to be secured by certificate|YourDomainName.com|
+
    ```bash
-   rm -rf worpress
-   rm -rf latest.tar.gz
+   sudo openssl req -new -key PrivateKeyFileName.key  -out CSRFileName.pem
    ```
-5. We need to make sure that Apache has to /var/www/html/ and /var/www/html/wp-content/ directory. This will allow Apache to update the config files when you configure your WordPress site.
+
+5. Finally the openssl command will prompt you for an optional challenge password.
+
+6. The resulting file will contain the public key, the digital certificate for this public key and the information you entered.
+
+7. Now you are ready to submit the CSR to a certificate authority. You will usually copy the content of CSR file into the certificate request form. The CA will validate the ownership of the domain before issuing the certificate. After the request has been approved, you will receive a new certificate signed by the certificate authority. The certificate file will have .crt extension
+
+
+8. Copy the certificate to your server. The easiest way is to copy the content of the crt file, create a new file on server and paste the content. Alternatively you can upload the certificate to S3 bucket and copy to server using aws cli.
+
+9. Copy signed certificate files to /etc/pki/tls/certs/ directory.
+
+10. You can check the details of the CA signed certificate.
+    ```bash
+    openssl x509 -in certificate.crt -text
+    ```
+11. We need to make sure that the signed certificate files has highly restrictive ownership. Perform these actions on all crt files
+
+    ```bash
+    sudo chown root.root certificate.crt
+    sudo chmod 0600 certificate.crt
+    ls -al certificate.crt
+    ```
+
+# Update ssl.conf
+This is the configuration file for mod_ssl. It contains configuration which tells Apache where to find encryption key, certificate, SSL/TLS settings and cipher information.
+
+1. Edit /etc/httpd/conf.d/ssl.conf
+
+2. Update Apache’s SSLCertificateFile directive
+
    ```bash
-   cd /var/www/html/
-   sudo chmod -R 755 wp-content
+   SSLCertificateFile /etc/pki/tls/certs/certificate.crt
    ```
-   755 – This set of permission is commonly used in web server. The owner has all the permissions to read, write and execute. Everyone else can only read and execute, but cannot make changes to the file.
+3. If you have recieved CA intermediate certificate file, update SSLCACertificateFile directive
    ```bash
-   sudo chown -R apache.apache wp-content
-   sudo chown -R apache:apache /var/www/html/
+   SSLCACertificateFile /etc/pki/tls/certs/intermediate.crt
    ```
-   You will not be able to install plugins or themes if Apaches doesn’t have right to update /var/www/html/ folder.
-   
-6. Restart Apache web server
+
+4. Update private key path in SSLCertificateKeyFile directive
+   ```bash
+   SSLCertificateKeyFile /etc/pki/tls/private/custom.key
+   ```
+
+5. Save ssl.conf and restart Apache
    ```bash
    sudo service httpd restart
    ```
 
-# Configure WordPress site
-You would be able to browse to your WordPress site by using the public IP of the EC2 instance. Open EC2 console to find the public ip.
-
-![EC2 console](/assets/images/wp-ec2.png "EC2 console")
-
-
-If configured correctly, you will see the WordPress welcome page.
-
-![Welcome to WordPress](/assets/images/wp1.png "Welcome to WordPress")
-
----
-We will now go in and configure WordPress. Enter the details of RDS instance we created previously. Enter the RDS endpoint in Database Host section and click Submit.
-
-![Wordpress database configuration](/assets/images/wp2.png "Wordpress database configuration")
-
----
-We will now be redirected welcome screen.
-
-![WordPress welcome screen](/assets/images/wp3.png "WordPress welcome screen")
-
-Enter details of your site and click on Install WordPress. With any luck we will not see any issue and will be redirected to login screen.
-
-So far we were able to access the blog via public IP address of the server. In the article [Configure domain name routing to Ec2 instance](/Home/AWS/Configure-domain-name-routing-to-EC2-Instance-using-Amazon-Route-53 ), I will describe on how to register a domain using Amazon Route 53 and configure a simple routing policy to route traffic for your domain to your web server.
+Your Apache web server is now ready for SSL/TLS communication.

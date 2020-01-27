@@ -3,13 +3,12 @@ layout: post
 title: "Converting VMWare to Microsoft Virtual Machine"
 date: 2020-01-23
 categories: virtualisation
+tags: vmware hyperv
 ---
-
-# Converting VMWare to Microsoft Virtual Machine 
 
 Converting virtual machines and disks from VMWare hosts to Hyper-V hosts and Windows Azure or convert computers and disks to Hyper-V hosts can be achieved by using Microsoft Virtual Machine Converter GUI or powershell cmdlet
 
-## Pre-requisite
+# Pre-requisite
 Download 
    1.   [Microsoft Virtual Machine Converter 3.0](https://www.microsoft.com/en-gb/download/details.aspx?id=42497)
    2. [dsfok toolset](http://sanbarrow.com/files/dsfok.zip)
@@ -19,7 +18,7 @@ VMWare virtual machines are in vmdk format which is not supported by Windows Hyp
 Microsoft Virtual Machine Converter (MVMC) provides native support for Windows PowerShell and can also be invoked through the Windows PowerShell command-line interface. 
 
 
-## Converting VMDX to VHD/VHDX
+# Converting VMDX to VHD/VHDX
 
 1. Open a powershell command line console in the folder where VMWar vmdk file is stored
 2. Execute following powershell command to import MVMC powershell commandlet
@@ -31,11 +30,11 @@ Import-Module "C:\Program Files\Microsoft Virtual Machine Converter\MvmcCmdlet.p
 ConvertTo-MvmcVirtualHardDisk -SourceLiteralPath "file-to-be-converted.vmdk" -DestinationLiteralPath "<destination-folder-path>" -VhdType DynamicHardDisk -VhdFormat Vhd
 ```
 
->**Usage**
->- _**SourceLiteralPath**_ <path> is the path to a VMware virtual disk that should be converted.
->- _**DestinationLiteralPath**_ <path> is the path to a directory where the virtual disk of the Hyper-V format should be saved.
->- _**VhdType**_ <type> defines the type of the virtual disk – either dynamically expanding or fixed.
->- _**VhdFormat**_ defines the format of the Hyper-V virtual disk (VHD or VHDX).
+**Usage**
+- **SourceLiteralPath**_ <path> is the path to a VMware virtual disk that should be converted.
+- **DestinationLiteralPath**_ <path> is the path to a directory where the virtual disk of the Hyper-V format should be saved.
+- **VhdType**_ <type> defines the type of the virtual disk – either dynamically expanding or fixed.
+- **VhdFormat**_ defines the format of the Hyper-V virtual disk (VHD or VHDX).
 
 Wait until the conversion process is finished. You will find the converted VHD/VHDX file in the folder path mentioned in **DestinationLiteralPath** parameter.
 

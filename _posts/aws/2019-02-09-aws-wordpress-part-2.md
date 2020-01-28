@@ -3,7 +3,7 @@ layout: post
 title: "WordPress on AWS - Part 2: Configure Domain using AWS Route 53"
 date: 2018-02-09
 categories: aws ec2 wordpress
-tags: aws route53
+tags: aws
 ---
 
 In this post I will describe how to register a domain with AWS Route53 and configure a simple routing policy to route traffic to your WordPress site.

@@ -3,7 +3,7 @@ layout: post
 title: "Configure ssh on Raspberry Pi"
 date: 2019-10-15
 categories: raspberrypi
-tags: raspberry-pi ssh
+tags: raspberry-pi
 ---
 
 # Install and enable ssh service

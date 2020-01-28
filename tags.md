@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Blog Posts by Tag
 desc: "A list of blog posts organized by tags"
 permalink: /tag/

@@ -3,7 +3,7 @@ layout: post
 title: "WordPress on AWS - Part 1: Deploying WordPress on AWS EC2"
 date: 2018-02-09
 categories: aws ec2 wordpress
-tags: aws ec2 rds
+tags: aws
 ---
 
 # Configuring MySql RDS instance

@@ -25,13 +25,13 @@ It also includes the Azure Functions runtime
 > Install [Azure CLI[(https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) locally to be able to publish functions to Azure from Azure Functions Core Tool
 
 
-#### Azure Storage Emulator
+#### <a href="#azure-storage-emulator">Azure Storage Emulator</a>
 Azure Storage Emulator is only available on Windows. For other OS, you will need to rely on a real storage account. [Azure Storage Emulator](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) is installed as part of Azure SDK
 
 ## Troubleshooting installation
 ### Azure Functions core tools version 3 : throw er;
 
-Executing **func** command on a Windows OS where Azure Functions core tool version 3 and node.js 13 or above version is install results in following error:
+Executing **func** command on a Windows OS where Azure Functions core tool version 3 and node.js 13 or above version is installed results in following error:
 ```
 events.js:292
       throw er; // Unhandled 'error' event
@@ -161,7 +161,7 @@ To create a new function in a single command, run:
 func new --template "Http Trigger" --name newHttpTrigger
 ```
 
-###Run functions locally
+### Run functions locally
 To run a Functions project locally, you will have to run the Functions host. The Functions host enables triggers for all the functions in the project. 
 
 ```

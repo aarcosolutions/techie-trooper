@@ -307,6 +307,6 @@ When no valid storage connection string is set for AzureWebJobsStorage and the e
 ```Missing value for AzureWebJobsStorage in local.settings.json. This is required for all triggers other than HTTP. You can run 'func azure functionapp fetch-app-settings <functionAppName>' or specify a connection string in local.settings.json.```
 
 To resolve this issues:
-1. [Install Azure Storage Emulator](#Azure-Storage-Emulator)
+1. [Install Azure Storage Emulator](#azure-storage-emulator)
 2. Use a valid storage account connection string from Azure.
 

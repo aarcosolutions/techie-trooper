@@ -3,7 +3,7 @@ layout: post
 title: "Azure Functions Core Tools"
 date: 2020-06-18
 categories: azure azure-functions
-tags: azure, azure-functions
+tags: azure azure-functions
 ---
 
 ## Prerequisite

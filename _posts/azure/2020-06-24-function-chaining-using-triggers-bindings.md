@@ -5,6 +5,12 @@ date: 2020-06-24
 categories: azure azure-functions
 tags: azure azure-functions
 ---
+## Table of Content
+[Context](#context)<br>
+[Highlevel Flow](#highlevel-flow)<br>
+[Development Environment](#development-environment)<br>
+[Configuration](#configuration)<br>
+[Code Repository](#code-repository)<br><br>
 
 ## <a href="#context">Context</a>
 Azure Functions allows developers to take action when an event occurs. It connects to various data sources or messaging solutions which makes it easy to process and handle events. Developers can leverage Azure Functions to build HTTP-based API endpoints or can develop functions which reacts to a message inserted in a queue. Azure Functions scales automatically and you only pay for compute resources when your functions are running. 
@@ -66,7 +72,9 @@ Create following queues on your Storage Account / Storage Emulator
 
 ### <a href="#send-grid">SendGrid</a>
 
-You will need a SendGrid account to send emails. I have utilised the free SendGrid account came with Microsoft Partner Action Pack Subscription. 
+You will need a SendGrid account to send emails. I have utilised the free SendGrid account which came with Microsoft Partner Action Pack Subscription. 
 
 ## <a href="#code-repository">Code Repository</a>
-[reward-platform](https://aarcosolution@dev.azure.com/aarcosolution/techie-trooper/_git/reward-platform)
+```bash
+git clone https://aarcosolution@dev.azure.com/aarcosolution/techie-trooper/_git/reward-platform
+```

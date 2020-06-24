@@ -3,6 +3,7 @@ layout: post
 title: "WordPress on AWS - Part 3: Configure SSL"
 date: 2018-02-09
 categories: apache openssl
+tags: aws
 ---
 
 In this post, I will be explaining the steps for configuring SSL on Apache Web Server running on AWS EC2 Amazon Linux instance. 

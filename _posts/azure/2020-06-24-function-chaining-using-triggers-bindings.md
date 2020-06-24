@@ -50,13 +50,13 @@ User registers with Reward Platform and receives an email with an unique reward 
    - Microsoft.NET.Sdk.Functions - 3.0.7
 
 ## <a href="#configuration">Configuration</a>
-### <a href="#storage-queues">Storage Queues</a>
+### Storage Queues
 Create following queues on your Storage Account / Storage Emulator
 - customer-registered
 - code-issued
 - notify-customer
 
- ### <a href="#cosmos-db">Cosmos Db</a>
+ ### Cosmos Db
 - Create Database Name: RewardPlatform
 - Create following collections:
   - Customers
@@ -70,7 +70,7 @@ Create following queues on your Storage Account / Storage Emulator
 }
 ```
 
-### <a href="#send-grid">SendGrid</a>
+### SendGrid
 
 You will need a SendGrid account to send emails. I have utilised the free SendGrid account which came with Microsoft Partner Action Pack Subscription. 
 

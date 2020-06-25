@@ -1,16 +1,14 @@
-theme: jekyll-theme-hacker
-#remote_theme: mkchoi212/paper-jekyll-theme
 title: Techie Trooper
 author: Amit Rai Sharma
 email: me@techie-trooper.com
 description: >- # this means to ignore newlines until "baseurl:"
   Learning And Sharing
 github_username:  aarcosolutions
-
 show_excerpts: true # set to false to remove excerpts on the homepage
 
+# Build settings
+theme: minima
 
-
-
-
-theme: jekyll-theme-hacker
+plugins:
+ - jekyll-feed
+ - jekyll-seo-tag

@@ -3,6 +3,8 @@ layout: post
 title: "Azure Functions chaining using triggers and bindings"
 date: 2020-06-24
 categories: azure azure-functions
+author:
+- Amit Rai Sharma
 tags: azure azure-functions
 ---
 ## Table of Content

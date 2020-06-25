@@ -13,7 +13,8 @@
 
 .site-title {
   @include relative-font-size(1.625);
-  font-weight: 300;
+  font-weight: 600;
+  font-size: xx-large;
   letter-spacing: -1px;
   margin-bottom: 0;
   float: left;
@@ -78,7 +79,7 @@
     line-height: $base-line-height;
     display: block;
     padding: 5px 10px;
-
+    font-weight: 400;
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
       margin-right: 0;

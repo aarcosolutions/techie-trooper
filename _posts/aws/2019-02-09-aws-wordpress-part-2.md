@@ -3,6 +3,8 @@ layout: post
 title: "WordPress on AWS - Part 2: Configure Domain using AWS Route 53"
 date: 2018-02-09
 categories: aws ec2 wordpress
+author:
+- Amit Rai Sharma
 tags: aws
 ---
 

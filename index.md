@@ -33,3 +33,4 @@ title: Home
   {% endif %}
   {% endfor %}
 </section>
+{%- include cookie-consent.html -%}

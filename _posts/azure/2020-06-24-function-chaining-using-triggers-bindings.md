@@ -12,7 +12,7 @@ tags: azure azure-functions
 [Highlevel Flow](#highlevel-flow)<br>
 [Development Environment](#development-environment)<br>
 [Configuration](#configuration)<br>
-[Code Repository](#code-repository)<br><br>
+[Code Repository](#code-repository)<br>
 
 ## <a href="#context">Context</a>
 Azure Functions allows developers to take action when an event occurs. It connects to various data sources or messaging solutions which makes it easy to process and handle events. Developers can leverage Azure Functions to build HTTP-based API endpoints or can develop functions which reacts to a message inserted in a queue. Azure Functions scales automatically and you only pay for compute resources when your functions are running. 
@@ -58,12 +58,13 @@ Create following queues on your Storage Account / Storage Emulator
 - code-issued
 - notify-customer
 
- ### Cosmos Db
+### Cosmos Db
 - Create Database Name: RewardPlatform
 - Create following collections:
   - Customers
   - RewardCodes
 - Create and insert data into RewardCodes based on following json
+
 ```json
 {
     "id": "GUID",

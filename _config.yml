@@ -1,9 +1,11 @@
 title: Techie Trooper
-author: Amit Rai Sharma
-email: me@techie-trooper.com
+author: 
+  name: Amit Rai Sharma
+  email: me@techie-trooper.com
 description: >- # this means to ignore newlines until "baseurl:"
   Learning And Sharing
-github_username:  aarcosolutions
+social_links:
+    linkedin: amitraisharma
 show_excerpts: true # set to false to remove excerpts on the homepage
 
 # Build settings

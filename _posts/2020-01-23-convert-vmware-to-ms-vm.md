@@ -3,6 +3,8 @@ layout: post
 title: "Converting VMWare to Microsoft Virtual Machine"
 date: 2020-01-23
 categories: virtualisation
+author:
+- Amit Rai Sharma
 tags: vmware hyperv
 ---
 

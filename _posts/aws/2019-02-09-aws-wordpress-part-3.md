@@ -3,6 +3,8 @@ layout: post
 title: "WordPress on AWS - Part 3: Configure SSL"
 date: 2018-02-09
 categories: apache openssl
+author:
+- Amit Rai Sharma
 tags: aws
 ---
 

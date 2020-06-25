@@ -3,6 +3,8 @@ layout: post
 title: "Configure ssh on Raspberry Pi"
 date: 2019-10-15
 categories: raspberrypi
+author:
+- Amit Rai Sharma
 tags: raspberry-pi
 ---
 

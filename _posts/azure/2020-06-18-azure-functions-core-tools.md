@@ -3,6 +3,8 @@ layout: post
 title: "Azure Functions Core Tools"
 date: 2020-06-18
 categories: azure azure-functions
+author:
+- Amit Rai Sharma
 tags: azure azure-functions
 ---
 

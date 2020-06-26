@@ -31,6 +31,9 @@ Following cookies are added when you accept to allow third party cookies.
 - cookie-notice-dismissed - This cookie is created when you click on the **Accept** link to allow third party cookies.
 
 ## How to opt-out from Google Analytics?
+
+**<div id="cookie-current-status">You have opted-in for third party cookies</div>**
+
 You can opt-out from Google Analytics on this site by clicking on the **<a id="cookie-notice-opt-out" class="btn btn-primary btn-sm">Opt-out</a>** link. 
 
 Following cookies will be deleted when Opt-out link is clicked:

@@ -40,11 +40,11 @@
 
     if(optOutElement){
         document.getElementById('cookie-notice-opt-out').addEventListener("click",function() {
-            eraseCookie("cookie-notice-dismissed", "/");
-            eraseCookie("cookie-notice-dismissed", "/privacy-policy");
-            eraseCookie("_gid", "/");
-            eraseCookie("_gat", "/");
-            eraseCookie("_gid", "/");            
+            removeCookie("cookie-notice-dismissed", "/");
+            removeCookie("cookie-notice-dismissed", "/privacy-policy");
+            removeCookie("_gid", "/");
+            removeCookie("_gat", "/");
+            removeCookie("_gid", "/");            
             location.reload();
         });
     }

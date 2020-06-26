@@ -17,7 +17,7 @@
     
     function eraseCookie(name) {
         //Cookies.remove(name, { path: '/',domain: 'techie-trooper.dev'} );
-        Cookies.set(name, value, { path: '/',domain: 'techie-trooper.dev' , expires: -10 } ); //expires in days
+        Cookies.set(name, "", { path: '/',domain: 'techie-trooper.dev' , expires: -10 } ); //expires in days
     }
 
     function disableAnalytics(flag){
@@ -38,11 +38,6 @@
     });
 
     var optOutElement = document.getElementById('cookie-notice-opt-out');
-
-    var currentStatus = document.getElementById('cookie-current-status');
-    if(currentStatus){ //Cookie status div
-        currentStatus.style.display = 'none';
-    }
 
     if(optOutElement){
         document.getElementById('cookie-notice-opt-out').addEventListener("click",function() {

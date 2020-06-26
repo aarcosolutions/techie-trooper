@@ -16,7 +16,8 @@
     }
     
     function eraseCookie(name) {
-        Cookies.remove(name, { path: '/',domain: 'techie-trooper.dev'} );
+        //Cookies.remove(name, { path: '/',domain: 'techie-trooper.dev'} );
+        Cookies.set(name, value, { path: '/',domain: 'techie-trooper.dev' , expires: -10 } ); //expires in days
     }
 
     function disableAnalytics(flag){

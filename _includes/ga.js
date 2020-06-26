@@ -21,3 +21,7 @@
     ga('create', 'UA-170785310-1', 'auto');  // Replace with your property ID.
     ga('send', 'pageview');
     ga('set', 'anonymizeIp', true);
+
+    function enableDisableAnalytics(flag){
+      window['ga-disable-UA-170785310-1'] = flag;
+    }

@@ -9,15 +9,14 @@
 <div id="cookie-notice"><span>We would like to use third party cookies and scripts to improve the functionality of this website.</span><a id="cookie-notice-accept" class="btn btn-primary btn-sm">Approve</a><a href="/privacy-policy" class="btn btn-primary btn-sm">More info</a></div>
 <script>
     function createCookie(name,value,days) {
-        Cookies.set(name, value, { path: '/',domain: 'techie-trooper.dev' , expires: days } ); //expires in days
+        Cookies.set(name, value, { path: '/', domain: '.techie-trooper.dev' , expires: days } ); //expires in days
     }
     function readCookie(name) {
         return Cookies.get(name);
     }
     
     function eraseCookie(name) {
-        //Cookies.remove(name, { path: '/',domain: 'techie-trooper.dev'} );
-        Cookies.set(name, "", { path: '/',domain: 'techie-trooper.dev' , expires: -10 } ); //expires in days
+        Cookies.remove(name, {domain: '.techie-trooper.dev'} );
     }
 
     function disableAnalytics(flag){
@@ -41,12 +40,10 @@
 
     if(optOutElement){
         document.getElementById('cookie-notice-opt-out').addEventListener("click",function() {
+            eraseCookie("cookie-notice-dismissed");
             eraseCookie("_gid");
             eraseCookie("_gat");
-            eraseCookie("_gid");
-            eraseCookie("cookie-notice-dismissed");
-
-            document.getElementById('cookie-current-status').style.display = 'none';
+            eraseCookie("_gid");            
             location.reload();
         });
     }

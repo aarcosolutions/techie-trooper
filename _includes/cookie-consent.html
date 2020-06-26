@@ -27,6 +27,10 @@
         }
         return null;
     }
+    
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
 
     if(readCookie('cookie-notice-dismissed')=='true') {
         {% include ga.js %}

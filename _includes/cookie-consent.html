@@ -18,6 +18,12 @@
     function removeCookie(name, cookiePath) {
         Cookies.remove(name, {path: cookiePath, domain: '.techie-trooper.dev'} );
     }
+    
+    function removeAnalyticsCookies(){
+        removeCookie("_gid", "/");
+        removeCookie("_gat", "/");
+        removeCookie("_gid", "/");      
+    }
 
     function disableAnalytics(flag){
       window['ga-disable-UA-170785310-1'] = flag;
@@ -29,6 +35,7 @@
     } else {
         document.getElementById('cookie-notice').style.display = 'block';
         disableAnalytics(true);
+        removeAnalyticsCookies();
     }
     document.getElementById('cookie-notice-accept').addEventListener("click",function() {
         createCookie('cookie-notice-dismissed','true',31);
@@ -42,9 +49,7 @@
         document.getElementById('cookie-notice-opt-out').addEventListener("click",function() {
             removeCookie("cookie-notice-dismissed", "/");
             removeCookie("cookie-notice-dismissed", "/privacy-policy");
-            removeCookie("_gid", "/");
-            removeCookie("_gat", "/");
-            removeCookie("_gid", "/");            
+            removeAnalyticsCookies();           
             location.reload();
         });
     }

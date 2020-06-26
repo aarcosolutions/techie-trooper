@@ -5,7 +5,6 @@ desc: "Privacy Policy"
 permalink: /privacy-policy/
 ---
 
-# Privacy Policy
 ## How we process your data?
 
 ### Github
@@ -20,10 +19,26 @@ However, we have taken following actions we can to limit the data collection pow
 1. We have enable IP anonymisation on Google Analytics
 2. Use SSL at all time. 
 
+## Cookies
+Following cookies are added when you accept to allow third party cookies.
+
+**Cookies added by Google Analytics:**
+- __utma
+- __utmb
+- __utmc
+- __utmt
+- __utmz
+
+**Cookie added by this website:**
+- cookie-notice-dismissed - This cookie is created when you click on the **Accept** link to allow third party cookies.
+
 ## How to opt-out from Google Analytics?
-#### Google Analytics opt-out browser add-on
-You can install [Google Analytics Opt-out](https://chrome.google.com/webstore/detail/google-analytics-opt-out/fllaojicojecljbmefodhfapmkghcbnh?hl=en) to your browser. This  add-on prevents the Google Analytics JavaScript (gtag.js, ga.js, analytics.js, and dc.js) that is running on websites from sharing information with Google Analytics about visit activity. 
+You can opt-out from Google Analytics on this site by clicking on the **<a id="cookie-notice-opt-out" class="btn btn-primary btn-sm">Opt-out</a>** link. 
 
-However using the Google Analytics opt-out browser add-on will not prevent data from being sent to the website itself or analytics used by GitHub. 
-
-{%- include cookie-consent.html -%}
+Following cookies will be deleted when Opt-out link is clicked:
+- __utma
+- __utmb
+- __utmc
+- __utmt
+- __utmz
+- cookie-notice-dismissed

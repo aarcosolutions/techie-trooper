@@ -39,4 +39,15 @@
         location.reload();
     });
 
+    document.getElementById('cookie-notice-opt-out').addEventListener("click",function() {
+        eraseCookie("__utma");
+        eraseCookie("__utmb");
+        eraseCookie("__utmc");
+        eraseCookie("__utmt");
+        eraseCookie("__utmz");
+        eraseCookie("cookie-notice-dismissed");
+
+        document.getElementById('cookie-notice-opt-out').style.display = 'none';
+        location.reload();
+    });
 </script>

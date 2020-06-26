@@ -5,3 +5,26 @@
 @import
   "minima/skins/{{ site.minima.skin | default: 'classic' }}",
   "minima/initialize";
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn:hover {
+  color: #212529;
+  text-decoration: none;
+}
+
+.btn, .btn-sm {
+  padding: .25rem .5rem;
+  font-size: 0.87rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}

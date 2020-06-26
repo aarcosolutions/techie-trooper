@@ -23,11 +23,9 @@ However, we have taken following actions we can to limit the data collection pow
 Following cookies are added when you accept to allow third party cookies.
 
 **Cookies added by Google Analytics:**
-- __utma
-- __utmb
-- __utmc
-- __utmt
-- __utmz
+- _gid
+- _gat
+- _gid
 
 **Cookie added by this website:**
 - cookie-notice-dismissed - This cookie is created when you click on the **Accept** link to allow third party cookies.
@@ -36,9 +34,7 @@ Following cookies are added when you accept to allow third party cookies.
 You can opt-out from Google Analytics on this site by clicking on the **<a id="cookie-notice-opt-out" class="btn btn-primary btn-sm">Opt-out</a>** link. 
 
 Following cookies will be deleted when Opt-out link is clicked:
-- __utma
-- __utmb
-- __utmc
-- __utmt
-- __utmz
+- _gid
+- _gat
+- _gid
 - cookie-notice-dismissed

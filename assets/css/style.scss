@@ -29,3 +29,11 @@ a:hover {
   color: #0056b3;
   text-decoration: underline;
 }
+
+li ol li {
+  list-style-type: circle;
+}
+
+li {
+  list-style-type: square;
+}

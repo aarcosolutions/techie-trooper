@@ -8,7 +8,7 @@ author:
 tags: aws
 ---
 
-# Configuring MySql RDS instance
+## Configuring MySql RDS instance
 
 WordPress uses MySql as datastore. You can install MySql on the same box which hosts the web server. Well it is not a good idea, as you will run into a risk of loosing data if the instance gets corrupted. Moreover you will have to configure the database snapshots manually. Creating a RDS instance will take away these headaches.
 
@@ -23,7 +23,7 @@ WordPress uses MySql as datastore. You can install MySql on the same box which h
 3. Make a note of the endpoint once the RDS instance is provisioned. You will need this endpoint while configuring WordPress site.
       ![MySql RDS Dashboard](/assets/images/rds3.png "MySql RDS Dashboard")
 
-# Configuring Security Group
+## Configuring Security Group
 A security group acts as a virtual firewall that controls the traffic for one or more instances. In this section we will create a security group for the EC2 instance and will modify security group attached with RDS instance. We need to make sure that web server will be able to connect to RDS instance and RDS instance is only accessible via web server.
 
 1. To create a Security Group, open EC2 console, select Security Groups and click on Create Security Group button
@@ -38,14 +38,15 @@ A security group acts as a virtual firewall that controls the traffic for one or
    ![Restrict RDS Access to web server](/assets/images/rds-sg2.png "Restrict RDS Access to web server")
 
 
-# Deploying an EC2 Linux Instance
+## Deploying an EC2 Linux Instance
 1. Provision an EBS-backed Amazon Linux instance. For more information, see Getting started with Amazon EC2 Linux Instances. In this case, I have used T2-Micro instance as it falls into free-tier for the first 12 months.
 2. Make sure you select the web server Security Group “sgWordPressWebServer” which we created previously.
 
-# Installing Apache web server
+## Installing Apache web server
 1. Connect to your EC2 instance
    ```bash
    ssh ec2-user@<instance-public-ip> -i <key-pair-file>
+   ```
 2. We need to ensure the software packages on your instance is latest. Perform a quick software update.
    ```bash
    sudo yum update -y
@@ -75,7 +76,7 @@ A security group acts as a virtual firewall that controls the traffic for one or
    sudo yum install -y mod_ssl
    ```
 
-# Installing Worpress
+## Installing Worpress
 1. Install php and php-mysql for WordPress
    ```bash
    sudo yum install php php-mysql -y
@@ -111,7 +112,7 @@ A security group acts as a virtual firewall that controls the traffic for one or
    sudo service httpd restart
    ```
 
-# Configure WordPress site
+## Configure WordPress site
 You would be able to browse to your WordPress site by using the public IP of the EC2 instance. Open EC2 console to find the public ip.
 
 ![EC2 console](/assets/images/wp-ec2.png "EC2 console")

@@ -10,7 +10,7 @@ tags: aws
 
 In this post, I will be explaining the steps for configuring SSL on Apache Web Server running on AWS EC2 Amazon Linux instance. 
 
-# Prerequisites
+## Prerequisites
 1. You will need to provision an EBS-backed Amazon Linux instance. For more information, see [Getting started with Amazon EC2 Linux Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
 
 2. Make sure the security group attached with your instance allows connections on following TCP ports:
@@ -20,7 +20,7 @@ In this post, I will be explaining the steps for configuring SSL on Apache Web S
 
 3. As a best practice, only allow SSH access to your IP address. You can configure this in the security group. For more information, see [Creating a Security Group](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#creating-security-group)
 
-# Installing Apache web server
+## Installing Apache web server
 1. Connect to your instance
    ```bash
    ssh ec2-user@<instance-public-ip> -i <key-pair-file>
@@ -60,7 +60,7 @@ In this post, I will be explaining the steps for configuring SSL on Apache Web S
    sudo yum install -y mod_ssl
    ```
 
-# Creating Private Key and Certificate Signing Request (CSR)
+## Creating Private Key and Certificate Signing Request (CSR)
 To obtain a signed certificate from Certificate Authority (CA), you would have to first generated a self-signed SSL/TLS X.509 host certificate.
 
 1. Connect to your instance and navigate to /etc/pki/tls/private. Server’s private key for SSL/TLS is stored in this directory.
@@ -118,7 +118,7 @@ To obtain a signed certificate from Certificate Authority (CA), you would have t
     ls -al certificate.crt
     ```
 
-# Update ssl.conf
+## Update ssl.conf
 This is the configuration file for mod_ssl. It contains configuration which tells Apache where to find encryption key, certificate, SSL/TLS settings and cipher information.
 
 1. Edit /etc/httpd/conf.d/ssl.conf

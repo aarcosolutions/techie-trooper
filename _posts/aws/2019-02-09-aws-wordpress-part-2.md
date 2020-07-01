@@ -10,7 +10,7 @@ tags: aws
 
 In this post I will describe how to register a domain with AWS Route53 and configure a simple routing policy to route traffic to your WordPress site.
 
-# Registering a domain on Amazon Route 53
+## Registering a domain on Amazon Route 53
 Amazon Route 53 is highly available and scaleable cloud based Domain Name System (DNS). It translates name like www.sample.com to IP address like 10.0.2.3. Here are some simple steps to register your domain
 
 1. Open [Route 53 console](https://console.aws.amazon.com/route53/home) and navigate to Registered domains section. This section will show a list of previously registered domains. Click on Register Domain.
@@ -36,7 +36,7 @@ Amazon Route 53 is highly available and scaleable cloud based Domain Name System
 7. Once the domain is registered, you can check the Hosted zone by navigating to Dashboard section. You will see Amazon has already created a hosted zones for your domain. NS record and SOA (Start of authority record) are created for any domain registered in Route 53.
    ![Domain hosted zones](/assets/images/r53-5.png "Domain hosted zones")
 
-# Configuring Route 53 to route traffic to your EC2 instance
+## Configuring Route 53 to route traffic to your EC2 instance
 1. Open the [EC2 console](https://console.aws.amazon.com/ec2/) and find the public IP address of your Amazon EC2 instance.
 2. Open the [Route 53 console](https://console.aws.amazon.com/route53/home) and navigate to Hosted Zones section.
 3. Click on your Domain Name, you will see list of configured hosted zones. Click on Create Record Set

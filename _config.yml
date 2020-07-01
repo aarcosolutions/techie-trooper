@@ -11,7 +11,8 @@ show_excerpts: true # set to false to remove excerpts on the homepage
 # Build settings
 theme: minima
 
+markdown: kramdown
+
 plugins:
  - jekyll-feed
  - jekyll-seo-tag
- - jekyll-toc

@@ -12,8 +12,8 @@ tags: azure azure-functions
 - [Overview](#overview)<br/>
 - [Advantages & Disadvantages of running function in container](#advantage-disadvantage)<br/>
 - [Containerising a function](#containerising-a-function)<br/>
-- [Deploying Reward Platform function app on docker desktop](#deploy-containerised-function-local)<br/>
-- [Deploying Reward Platform function app in Azure](#deploy-containerised-function-azure)<br/>
+- [Deploying function app on docker desktop](#deploy-containerised-function-local)<br/>
+- [Deploying function app in Azure](#deploy-containerised-function-azure)<br/>
 - [Code Repository](#code-repository)<br/>
 
 ## <a href="#overview">Overview</a>
@@ -158,7 +158,7 @@ mcr.microsoft.com/dotnet/core/sdk          3.1                                  
 mcr.microsoft.com/azure-functions/dotnet   3.0                                              0431ac042764        2 weeks ago         483MB
 ```
 
-## <a href="#deploy-containerised-function-local">Deploying Reward Platform function app on docker desktop</a>
+## <a href="#deploy-containerised-function-local">Deploying function app on docker desktop</a>
 
 You can run a containerised function app by executing docker run command. In case the function app depends on connection string, keep them handy. You can use [azure cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) to retrieve the connection strings from Azure resource like Storage Account or Cosmos Db.
 
@@ -186,7 +186,7 @@ $cosmosDbConnectionString = az cosmosdb keys list -n <cosmos-db-name> -g <resour
 docker run -e AzureWebJobsStorage=$storageConnStr  -e RewardPlatformCosmosDbConnectionString=$cosmosDbConnectionString -p8080:80 reward-platform:v1
 ```
 
-## <a href="#deploy-containerised-function-azure">Deploying Reward Platform function app in Azure</a>
+## <a href="#deploy-containerised-function-azure">Deploying function app in Azure</a>
 
 Containerised function can be deployed to Azure following ways:
 - Virtual Machine with Docker installer

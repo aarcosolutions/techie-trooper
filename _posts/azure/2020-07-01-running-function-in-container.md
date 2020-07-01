@@ -9,7 +9,7 @@ tags: azure azure-functions
 toc: true
 ---
 
-## <a href="#overview">Overview</a>
+## Overview
 Function version 2 onward the runtime is cross-platform, which means that the Azure Function runtime can be hosted in a docker container as well.
 
 Micrsoft has created docker images which allow to host Azure Function in a container. These images are available on [docker hub](https://hub.docker.com/_/microsoft-azure-functions-base).
@@ -23,7 +23,7 @@ docker pull mcr.microsoft.com/azure-functions/dotnet:3.0
 ```
 There are also images available for functions written in [JavaScript](https://hub.docker.com/_/microsoft-azure-functions-node), [Java](https://hub.docker.com/_/microsoft-azure-functions-java), [Python](https://hub.docker.com/_/microsoft-azure-functions-python) or [PowerShell](https://hub.docker.com/_/microsoft-azure-functions-powershell).
 
-## <a href="#advantage-disadvantage">Advantages & Disadvantages of running function in container</a>
+## Advantages & Disadvantages of running function in container
 
 ### Advantages 
 
@@ -41,12 +41,12 @@ There are some disadvantages of containerising functions:
    - Automatic scaling. 
    - Pay only when function is running. 
 
-## <a href="#containerising-a-function">Containerising a function</a>
+## Containerising a Reward Platfrom function app
 ### Prerequisite
 
 Install docker on you development environment. You will find the installation instruction for your OS on [Install Docker Engine](https://docs.docker.com/engine/install/).
 
-### Create a DockerFile
+### Creating DockerFile
 
 You can use Azure Functions Core Tools to create a dockerfile while creating a function app.
 ```
@@ -82,7 +82,7 @@ ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
 COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
 ```
 
-### Generating docker container image for Reward Platform function app
+### Generating docker container image
 
 Use docker build command to create a docker image
 
@@ -151,7 +151,7 @@ mcr.microsoft.com/dotnet/core/sdk          3.1                                  
 mcr.microsoft.com/azure-functions/dotnet   3.0                                              0431ac042764        2 weeks ago         483MB
 ```
 
-## <a href="#deploy-containerised-function-local">Deploying function app on docker desktop</a>
+## Deploying function app on docker desktop
 
 You can run a containerised function app by executing docker run command. In case the function app depends on connection string, keep them handy. You can use [azure cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) to retrieve the connection strings from Azure resource like Storage Account or Cosmos Db.
 
@@ -179,7 +179,7 @@ $cosmosDbConnectionString = az cosmosdb keys list -n <cosmos-db-name> -g <resour
 docker run -e AzureWebJobsStorage=$storageConnStr  -e RewardPlatformCosmosDbConnectionString=$cosmosDbConnectionString -p8080:80 reward-platform:v1
 ```
 
-## <a href="#deploy-containerised-function-azure">Deploying function app in Azure</a>
+## Deploying function app in Azure
 
 Containerised function can be deployed to Azure following ways:
 - Virtual Machine with Docker installer
@@ -337,7 +337,7 @@ info: Function.NotifyCustomer[0]
       Executed 'NotifyCustomer' (Succeeded, Id=ca6794ad-398f-4610-a03b-4ab5c8c6f6d7)
 ```
 
-## <a href="#code-repository">Code Repository</a>
+## Code Repository
 You can clone the Reward Platform using following command
 ```bash
 git clone https://aarcosolution@dev.azure.com/aarcosolution/techie-trooper/_git/reward-platform

@@ -12,7 +12,7 @@ tags: azure azure-functions
 - Azure Functions Core tools
 - Azure Storage Emulator
 
-#### Azure Functions Core Tools
+### Azure Functions Core Tools
 
 [Install Azure Functions Core tools](https://github.com/Azure/azure-functions-core-tools) which is compatible with the your OS. The toolkit includes:
 

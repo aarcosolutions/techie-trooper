@@ -1,20 +1,13 @@
 ---
 layout: post
-title: "Running function in Container"
+title: "Running Azure Function in Container"
 date: 2020-07-01
 categories: azure azure-functions
 author:
 - Amit Rai Sharma
 tags: azure azure-functions
+toc: true
 ---
-
-## Table of Content
-- [Overview](#overview)<br/>
-- [Advantages & Disadvantages of running function in container](#advantage-disadvantage)<br/>
-- [Containerising a function](#containerising-a-function)<br/>
-- [Deploying function app on docker desktop](#deploy-containerised-function-local)<br/>
-- [Deploying function app in Azure](#deploy-containerised-function-azure)<br/>
-- [Code Repository](#code-repository)<br/>
 
 ## <a href="#overview">Overview</a>
 Function version 2 onward the runtime is cross-platform, which means that the Azure Function runtime can be hosted in a docker container as well.

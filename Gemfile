@@ -4,6 +4,7 @@ gem github-pages-health-check
 gem jekyll-feed
 gem jekyll-paginate
 gem jekyll-sitemap
+gem 'jekyll-toc'
 gem minima
 
 #jekyll-swiss	1.0.0

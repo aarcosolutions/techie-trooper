@@ -30,10 +30,10 @@ a:hover {
   text-decoration: underline;
 }
 
-li ol li {
-  list-style-type: circle;
+div#toc li {
+  list-style-type: square;
 }
 
-li {
-  list-style-type: square;
+div#toc ol li ol li {
+  list-style-type: circle;
 }
